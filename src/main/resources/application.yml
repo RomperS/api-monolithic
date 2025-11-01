@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: api-monolithic
+  datasource:
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://postgres:5432/monolithic_db
+    driver-class-name: org.postgresql.Driver
+server:
+  port: 8080
