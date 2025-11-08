@@ -1,4 +1,4 @@
-package com.olo.apimonolithic.domain.model;
+package com.olo.apimonolithic.feature.inventorymanagement.domain.model;
 
 public record Inventory(
         Long id,
