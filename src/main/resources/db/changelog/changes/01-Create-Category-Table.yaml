@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0
+      author: Oswaldo-Lopez
+      changes:
+        - createTable:
+            tableName: categories
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(25)
+                  constraints:
+                    nullable: false
+                    unique: true
