@@ -7,5 +7,5 @@ import java.util.List;
 public interface FindCategory {
     List<Category> findAll();
     Category findById(Long id);
-    Category findByName(String name);
+    List<Category> findByName(String name);
 }

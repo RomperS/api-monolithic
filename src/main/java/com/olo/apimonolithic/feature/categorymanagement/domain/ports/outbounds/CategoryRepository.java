@@ -10,7 +10,7 @@ public interface CategoryRepository {
 
     List<Category> findAll();
     Optional<Category> findById(Long id);
-    Optional<Category>  findByName(String name);
+    List<Category>  findByName(String name);
 
     Category create(Category category);
 
