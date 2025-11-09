@@ -1,0 +1,18 @@
+package com.olo.apimonolithic.feature.categorymanagement.domain.ports.outbounds;
+
+import com.olo.apimonolithic.feature.categorymanagement.domain.model.Category;
+
+import java.util.Optional;
+
+public interface CategoryRepository {
+    boolean existsByName(String name);
+
+    Optional<Category> findById(Long id);
+    Optional<Category>  findByName(String name);
+
+    Category create(Category category);
+
+    Category update(Category category);
+
+    void delete(Long id);
+}
