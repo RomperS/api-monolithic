@@ -1,25 +1,20 @@
 package com.olo.apimonolithic.feature.categorymanagement.application;
 
-import com.olo.apimonolithic.feature.categorymanagement.application.impl.CreateCategoryImpl;
-import com.olo.apimonolithic.feature.categorymanagement.application.impl.DeleteCategoryImpl;
-import com.olo.apimonolithic.feature.categorymanagement.application.impl.FindCategoryImpl;
-import com.olo.apimonolithic.feature.categorymanagement.application.impl.RenameCategoryImpl;
+import com.olo.apimonolithic.feature.categorymanagement.application.impl.*;
 import com.olo.apimonolithic.feature.categorymanagement.domain.model.Category;
-import com.olo.apimonolithic.feature.categorymanagement.domain.ports.inbound.CreateCategory;
-import com.olo.apimonolithic.feature.categorymanagement.domain.ports.inbound.DeleteCategory;
-import com.olo.apimonolithic.feature.categorymanagement.domain.ports.inbound.FindCategory;
-import com.olo.apimonolithic.feature.categorymanagement.domain.ports.inbound.RenameCategory;
+import com.olo.apimonolithic.feature.categorymanagement.domain.ports.inbound.*;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 @RequiredArgsConstructor
-public class CategoryService implements CreateCategory, DeleteCategory, FindCategory, RenameCategory {
+public class CategoryService implements CreateCategory, DeleteCategory, FindCategory, RenameCategory, CategoryExists {
 
     private final CreateCategoryImpl createCategoryImpl;
     private final DeleteCategoryImpl deleteCategoryImpl;
     private final FindCategoryImpl findCategoryImpl;
     private final RenameCategoryImpl renameCategoryImpl;
+    private final CategoryExistsImpl categoryExistsImpl;
 
     @Override
     public Category create(Category category) {
@@ -49,5 +44,10 @@ public class CategoryService implements CreateCategory, DeleteCategory, FindCate
     @Override
     public Category rename(Category category) {
         return renameCategoryImpl.rename(category);
+    }
+
+    @Override
+    public boolean existsByName(String name) {
+        return categoryExistsImpl.existsByName(name);
     }
 }
