@@ -11,7 +11,7 @@ public class CategoryExistsImpl implements CategoryExists {
 
 
     @Override
-    public boolean existsByName(String name) {
-        return categoryRepository.existsByName(name);
+    public boolean existsById(Long id) {
+        return categoryRepository.existsById(id);
     }
 }

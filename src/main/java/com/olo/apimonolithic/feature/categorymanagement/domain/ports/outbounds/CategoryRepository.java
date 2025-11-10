@@ -7,6 +7,7 @@ import java.util.Optional;
 
 public interface CategoryRepository {
     boolean existsByName(String name);
+    boolean existsById(Long id);
 
     List<Category> findAll();
     Optional<Category> findById(Long id);

@@ -46,8 +46,9 @@ public class CategoryService implements CreateCategory, DeleteCategory, FindCate
         return renameCategoryImpl.rename(category);
     }
 
+
     @Override
-    public boolean existsByName(String name) {
-        return categoryExistsImpl.existsByName(name);
+    public boolean existsById(Long id) {
+        return categoryExistsImpl.existsById(id);
     }
 }
