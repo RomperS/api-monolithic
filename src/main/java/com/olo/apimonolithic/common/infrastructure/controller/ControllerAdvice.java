@@ -3,6 +3,8 @@ package com.olo.apimonolithic.common.infrastructure.controller;
 import com.olo.apimonolithic.common.domain.exception.DomainException;
 import com.olo.apimonolithic.common.domain.exception.category.CategoryExistsException;
 import com.olo.apimonolithic.common.domain.exception.category.CategoryNotFoundException;
+import com.olo.apimonolithic.common.domain.exception.product.ProductExistsException;
+import com.olo.apimonolithic.common.domain.exception.product.ProductNotFoundException;
 import com.olo.apimonolithic.common.infrastructure.utils.ResponseExceptionUtil;
 import com.olo.apimonolithic.feature.categorymanagement.infrastructure.dto.CategoryRequestDto;
 import com.olo.apimonolithic.feature.productmanagement.infrastructure.dto.ProductRequestDto;
@@ -26,9 +28,9 @@ public class ControllerAdvice {
     public void handleDomainException(DomainException ex, HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpStatus status;
 
-        if (ex instanceof CategoryNotFoundException) {
+        if (ex instanceof CategoryNotFoundException || ex instanceof ProductNotFoundException) {
             status = HttpStatus.NOT_FOUND;
-        } else if (ex instanceof CategoryExistsException) {
+        } else if (ex instanceof CategoryExistsException || ex instanceof ProductExistsException) {
             status = HttpStatus.CONFLICT;
         } else {
             status = HttpStatus.INTERNAL_SERVER_ERROR;
