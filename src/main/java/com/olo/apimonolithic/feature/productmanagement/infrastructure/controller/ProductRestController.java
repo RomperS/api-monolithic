@@ -47,7 +47,7 @@ public class ProductRestController {
         );
     }
 
-    @PutMapping
+    @PatchMapping
     public ResponseEntity<ProductResponseDto> update(@Valid @RequestBody ProductUpdateRequestDTO dto) {
         return ResponseEntity.ok().body(ProductMapper.modelToDto(productService.update(ProductMapper.dtoToUpdateCommand(dto))));
     }
