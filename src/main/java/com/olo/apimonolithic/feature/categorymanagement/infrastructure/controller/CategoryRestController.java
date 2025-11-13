@@ -5,8 +5,10 @@ import com.olo.apimonolithic.feature.categorymanagement.domain.model.Category;
 import com.olo.apimonolithic.feature.categorymanagement.infrastructure.dto.CategoryRequestDto;
 import com.olo.apimonolithic.feature.categorymanagement.infrastructure.dto.CategoryResponseDto;
 import com.olo.apimonolithic.feature.categorymanagement.infrastructure.mapper.CategoryMapper;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,7 +21,7 @@ public class CategoryRestController {
     private final CategoryService categoryService;
 
     @PostMapping("/create")
-    public ResponseEntity<CategoryResponseDto> createCategory(@RequestBody CategoryRequestDto dto) {
+    public ResponseEntity<CategoryResponseDto> createCategory(@Valid @RequestBody CategoryRequestDto dto) {
         Category category = categoryService.create(CategoryMapper.dtoToModel(dto));
         return ResponseEntity.ok().body(CategoryMapper.modelToDto(category));
     }
@@ -40,7 +42,7 @@ public class CategoryRestController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CategoryResponseDto> renameCategory(@RequestBody CategoryRequestDto dto, @PathVariable Long id) {
+    public ResponseEntity<CategoryResponseDto> renameCategory(@Valid @RequestBody CategoryRequestDto dto, @PathVariable Long id) {
         return ResponseEntity.ok().body(CategoryMapper.modelToDto(categoryService.rename(CategoryMapper.renameToModel(dto, id))));
     }
 
