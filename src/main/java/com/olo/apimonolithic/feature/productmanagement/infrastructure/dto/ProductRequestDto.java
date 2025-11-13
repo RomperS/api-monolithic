@@ -9,6 +9,6 @@ import java.util.List;
 
 public record ProductRequestDto(
         @NotEmpty String name,
-        @NotNull @DecimalMin(value = "0.0") BigDecimal value,
+        @NotNull @DecimalMin(value = "0.1") BigDecimal value,
         @NotEmpty List<Long> categoriesId
 ) {}

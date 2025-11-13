@@ -8,14 +8,14 @@ import java.math.BigDecimal;
 public record ProductSearchRequestDTO(
         Long id,
         String name,
-        @NotNull(message = "Category ID is mandatory for search.")
+        @NotNull
         Long categoryId,
         ValueRangeDTO valueRange,
 
-        @Min(value = 1, message = "Page number must be 1 or higher.")
+        @Min(value = 1)
         int page,
 
-        @Min(value = 1, message = "Page size must be 1 or higher.")
+        @Min(value = 1)
         int pageSize
 ) {
     public record ValueRangeDTO(BigDecimal min, BigDecimal max) {

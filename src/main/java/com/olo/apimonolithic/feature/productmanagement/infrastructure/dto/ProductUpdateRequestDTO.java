@@ -7,11 +7,11 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public record ProductUpdateRequestDTO(
-        @NotNull(message = "Target ID must not be null for update.")
+        @NotNull
         Long targetId,
         String name,
         List<Long> additionalCategories,
         List<Long> categoriesToRemove,
-        @DecimalMin(value = "0.0") BigDecimal value
+        @DecimalMin(value = "0.1") BigDecimal value
 ) {
 }
