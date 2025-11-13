@@ -3,12 +3,11 @@ package com.olo.apimonolithic.feature.productmanagement.application.impl;
 import com.olo.apimonolithic.common.domain.exception.category.CategoryNotFoundException;
 import com.olo.apimonolithic.common.domain.exception.product.ProductNotFoundException;
 import com.olo.apimonolithic.feature.categorymanagement.domain.ports.inbound.CategoryExists;
-import com.olo.apimonolithic.feature.categorymanagement.domain.ports.inbound.FindCategory;
 import com.olo.apimonolithic.feature.productmanagement.domain.command.ProductSearchCriteria;
+import com.olo.apimonolithic.feature.productmanagement.domain.command.ProductSearchCriteria.ValueRange;
 import com.olo.apimonolithic.feature.productmanagement.domain.model.Product;
 import com.olo.apimonolithic.feature.productmanagement.domain.port.inbound.FindProduct;
 import com.olo.apimonolithic.feature.productmanagement.domain.port.outbound.ProductRepository;
-import com.olo.apimonolithic.feature.productmanagement.domain.command.ProductSearchCriteria.*;
 import lombok.RequiredArgsConstructor;
 
 import java.math.BigDecimal;
