@@ -1,13 +1,14 @@
 package com.olo.apimonolithic.feature.productmanagement.infrastructure.dto;
 
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 
 public record ProductSearchRequestDTO(
         Long id,
         String name,
-        @jakarta.validation.constraints.NotNull(message = "Category ID is mandatory for search.")
+        @NotNull(message = "Category ID is mandatory for search.")
         Long categoryId,
         ValueRangeDTO valueRange,
 

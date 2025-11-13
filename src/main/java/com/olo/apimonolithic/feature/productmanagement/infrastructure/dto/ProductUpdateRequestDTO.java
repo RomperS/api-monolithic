@@ -1,5 +1,6 @@
 package com.olo.apimonolithic.feature.productmanagement.infrastructure.dto;
 
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
@@ -11,6 +12,6 @@ public record ProductUpdateRequestDTO(
         String name,
         List<Long> additionalCategories,
         List<Long> categoriesToRemove,
-        BigDecimal value
+        @DecimalMin(value = "0.0") BigDecimal value
 ) {
 }
