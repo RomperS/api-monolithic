@@ -10,8 +10,8 @@ import java.util.List;
 
 @Repository
 public interface ProductJpaRepository extends JpaRepository<ProductEntity, Long> {
-    boolean existsByNameContainingIgnoreCase(String name);
-
     @Query("SELECT p FROM ProductEntity p JOIN p.categories c WHERE c.id = :categoryId")
     List<ProductEntity> findProductsByCategoryId(@Param("categoryId") Long categoryId);
+
+    boolean existsByNameIgnoreCase(String name);
 }
