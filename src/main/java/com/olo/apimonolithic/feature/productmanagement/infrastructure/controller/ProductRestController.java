@@ -6,6 +6,7 @@ import com.olo.apimonolithic.feature.productmanagement.infrastructure.dto.Produc
 import com.olo.apimonolithic.feature.productmanagement.infrastructure.dto.ProductSearchRequestDTO;
 import com.olo.apimonolithic.feature.productmanagement.infrastructure.dto.ProductUpdateRequestDTO;
 import com.olo.apimonolithic.feature.productmanagement.infrastructure.mapper.ProductMapper;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -21,7 +22,7 @@ public class ProductRestController {
     private final ProductService productService;
 
     @PostMapping
-    public ResponseEntity<ProductResponseDto> create(@RequestBody ProductRequestDto dto){
+    public ResponseEntity<ProductResponseDto> create(@Valid @RequestBody ProductRequestDto dto){
         return ResponseEntity.ok().body(ProductMapper.modelToDto(productService.create(ProductMapper.dtoToCreateCommand(dto))));
     }
 
@@ -36,7 +37,7 @@ public class ProductRestController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<ProductResponseDto>> findByCriteria(@RequestBody @Validated ProductSearchRequestDTO dto) {
+    public ResponseEntity<List<ProductResponseDto>> findByCriteria(@Valid @RequestBody ProductSearchRequestDTO dto) {
         return ResponseEntity.ok().body(
                 productService.findByFilter(
                         ProductMapper.dtoToSearchCommand(dto))
@@ -47,7 +48,7 @@ public class ProductRestController {
     }
 
     @PutMapping
-    public ResponseEntity<ProductResponseDto> update(@RequestBody ProductUpdateRequestDTO dto) {
+    public ResponseEntity<ProductResponseDto> update(@Valid @RequestBody ProductUpdateRequestDTO dto) {
         return ResponseEntity.ok().body(ProductMapper.modelToDto(productService.update(ProductMapper.dtoToUpdateCommand(dto))));
     }
 
